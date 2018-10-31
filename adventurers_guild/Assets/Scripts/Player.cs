@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-
-    [SerializeField]
-    private float speed;
-
-    private Vector2 direction;
 
     // Use this for initialization
     void Start()
@@ -17,16 +12,14 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         GetInput();
-        Move();
+
+        // Call the Super/Inherited version of Update
+        base.Update();
     }
 
-    public void Move()
-    {
-        transform.Translate(direction * speed * Time.deltaTime);
-    }
 
     private void GetInput()
     {
